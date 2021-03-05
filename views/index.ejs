@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <title>Todo App</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="/">Todo App</a>
+    </nav>
+
+    <div class="container mt-5">
+      <form action="/add/todo" method="post" class="d-flex">
+        <input type="text" name="todo" class="form-control" placeholder="Enter Todo">
+        <input type="submit" value="Add Todo" class="btn btn-primary mx-2">
+      </form>
+      <ul class="list-group my-5">
+        <% data.forEach(data =>{ %>
+        <li class="row align-items-center mt-2">
+          <div class="form-control col-10 mr-2"><%= data.todo %></div>
+          <div class="text-right">
+            <a href="/edit/todo/<%= data._id %>" class="btn btn-primary">Edit</a>
+            <a href="/delete/todo/<%= data._id %>" class="btn btn-primary">Delete</a>
+          </div>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+  </body>
+</html>
